@@ -113,5 +113,17 @@ function getBooksByAuthor(author) {
 
 getBooksByAuthor("Chinua Achebe");
 
+function getBooksByTitle(title) {
+    axios.get(`http://localhost:5000/title/${encodeURIComponent(title)}`)
+        .then((response) => {
+            console.log(JSON.stringify(response.data, null, 4));
+        })
+        .catch((error) => {
+            console.log("Error fetching books by title: " + error.message);
+        });
+}
+
+getBooksByTitle("Things Fall Apart");
+
 getAllBooks();
 module.exports.general = public_users;
