@@ -89,5 +89,17 @@ async function getAllBooks() {
     }
 }
 
+function getBookByISBN(isbn) {
+    axios.get(`http://localhost:5000/isbn/${isbn}`)
+        .then((response) => {
+            console.log(JSON.stringify(response.data, null, 4));
+        })
+        .catch((error) => {
+            console.log("Error fetching book by ISBN: " + error.message);
+        });
+}
+
+getBookByISBN(1);
+
 getAllBooks();
 module.exports.general = public_users;
