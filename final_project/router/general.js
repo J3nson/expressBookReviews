@@ -101,5 +101,17 @@ function getBookByISBN(isbn) {
 
 getBookByISBN(1);
 
+function getBooksByAuthor(author) {
+    axios.get(`http://localhost:5000/author/${encodeURIComponent(author)}`)
+        .then((response) => {
+            console.log(JSON.stringify(response.data, null, 4));
+        })
+        .catch((error) => {
+            console.log("Error fetching books by author: " + error.message);
+        });
+}
+
+getBooksByAuthor("Chinua Achebe");
+
 getAllBooks();
 module.exports.general = public_users;
